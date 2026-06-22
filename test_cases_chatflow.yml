@@ -1,0 +1,1148 @@
+app:
+  description: An automated QA assistant that generates comprehensive positive and
+    negative test cases based on functional requirements and outputs them as a downloadable
+    JSON file.
+  icon: memo
+  icon_background: '#D3F8DF'
+  icon_type: emoji
+  mode: advanced-chat
+  name: TestCase AI
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: kurokobo/file_tools:0.0.2@8bde7b4d2c30cf22e8f6ce851572af244f7a5776addab94330b820dc2160726c
+    version: null
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/mistralai:0.0.9@7efc64d9ee434102afa9ee57ba5a2d8fa1babbb9170fe2838edd46050bfeae6e
+    version: null
+kind: app
+version: 0.6.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      - .DOC
+      - .TXT
+      allowed_file_types:
+      - custom
+      allowed_file_upload_methods:
+      - remote_url
+      - local_file
+      enabled: true
+      fileUploadConfig:
+        attachment_image_file_size_limit: 2
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        file_upload_limit: 50
+        image_file_batch_limit: 10
+        image_file_size_limit: 10
+        single_chunk_attachment_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: Hi! I'm here to help you quickly generate positive and negative
+      test cases based on your requirements and export them into a ready-to-use JSON
+      file. Please describe the functionality you need to test.
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions:
+    - ''
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        sourceType: start
+        targetType: llm
+      id: 1782112053097-llm
+      selected: false
+      source: '1782112053097'
+      sourceHandle: source
+      target: llm
+      targetHandle: target
+      type: custom
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: if-else
+      id: llm-source-1782113787130-target
+      selected: false
+      source: llm
+      sourceHandle: source
+      target: '1782113787130'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: code
+      id: 1782113787130-true-1782113841228-target
+      selected: false
+      source: '1782113787130'
+      sourceHandle: 'true'
+      target: '1782113841228'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: template-transform
+      id: 1782113787130-false-1782113859906-target
+      selected: false
+      source: '1782113787130'
+      sourceHandle: 'false'
+      target: '1782113859906'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: llm
+      id: 1782113841228-source-17821140718050-target
+      selected: false
+      source: '1782113841228'
+      sourceHandle: source
+      target: '17821140718050'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: 17821140718050-source-17821152106010-target
+      selected: false
+      source: '17821140718050'
+      sourceHandle: source
+      target: '17821152106010'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: 17821152106010-source-17821152359960-target
+      selected: false
+      source: '17821152106010'
+      sourceHandle: source
+      target: '17821152359960'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 17821152359960-source-17821152681720-target
+      selected: false
+      source: '17821152359960'
+      sourceHandle: source
+      target: '17821152681720'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: tool
+      id: 17821152681720-source-17821152985160-target
+      selected: false
+      source: '17821152681720'
+      sourceHandle: source
+      target: '17821152985160'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: tool
+        targetType: tool
+      id: 17821152985160-source-17821153275130-target
+      selected: false
+      source: '17821152985160'
+      sourceHandle: source
+      target: '17821153275130'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: template-transform
+        targetType: answer
+      id: 1782113859906-source-1782115539148-target
+      source: '1782113859906'
+      sourceHandle: source
+      target: '1782115539148'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: tool
+        targetType: template-transform
+      id: 17821153275130-source-1782116812245-target
+      source: '17821153275130'
+      sourceHandle: source
+      target: '1782116812245'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: template-transform
+        targetType: answer
+      id: 1782116812245-source-1782115470936-target
+      source: '1782116812245'
+      sourceHandle: source
+      target: '1782115470936'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        selected: false
+        title: USER INPUT
+        type: start
+        variables: []
+      height: 73
+      id: '1782112053097'
+      position:
+        x: 80
+        y: 282
+      positionAbsolute:
+        x: 80
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - sys
+          - query
+        memory:
+          query_prompt_template: '{{#sys.query#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 10
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: codestral-2501
+          provider: langgenius/mistralai/mistralai
+        prompt_template:
+        - id: 280bd80d-5561-4165-9124-144f5d35c028
+          role: system
+          text: 'You are a strict input validation filter. Your job is to determine
+            if the user''s input has enough details to generate QA test cases.
+
+
+            Analyze the user''s input and follow these exact rules:
+
+            - If the text describes any feature, form, page, button, validation, or
+            system logic (even in Russian), output exactly: YES
+
+            - If the text is too short, contains only greetings (like "hello", "hi",
+            "привет"), or is just random text/gibberish, output exactly: NO
+
+
+            Examples:
+
+            Input: "Login form with email and password fields." -> Output: YES
+
+            Input: "Разработать функционал авторизации" -> Output: YES
+
+            Input: "hello friend" -> Output: NO
+
+            Input: "привет" -> Output: NO
+
+
+            Respond with ONLY the word "YES" or "NO". Do not add explanations, intro
+            text, or markdown.
+
+
+            '
+        - id: 1a6e27fe-0134-4609-968e-95b09fb3e7c8
+          role: user
+          text: '{{#sys.query#}}'
+        selected: false
+        title: Check_Completeness
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: llm
+      position:
+        x: 380
+        y: 282
+      positionAbsolute:
+        x: 380
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: contains
+            id: b5f1b2a9-52c0-445b-987e-0a6739067a0b
+            value: 'YES'
+            varType: string
+            variable_selector:
+            - llm
+            - text
+          id: 'true'
+          logical_operator: and
+        selected: false
+        title: COMPLETE/NOT COMPLETE
+        type: if-else
+      height: 148
+      id: '1782113787130'
+      position:
+        x: 683.0314331330208
+        y: 282
+      positionAbsolute:
+        x: 683.0314331330208
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "import re\nimport json\n\ndef main(user_requirements=None) -> dict:\n\
+          \    # 1. Защита от пустого ввода и приведение к строке\n    if not user_requirements:\n\
+          \        return {\"result\": \"Пустые требования\"}\n        \n    if isinstance(user_requirements,\
+          \ (dict, list)):\n        text = json.dumps(user_requirements, ensure_ascii=False)\n\
+          \    else:\n        text = str(user_requirements)\n    \n    # Регулярные\
+          \ выражения для поиска email, телефонов и паролей\n    email_regex = r'[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\\
+          .[a-zA-Z0-9-.]+'\n    phone_regex = r'\\+?\\d{1,4}?[-.\\s]?\\(?\\d{1,3}?\\\
+          )?[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,9}'\n    password_regex\
+          \ = r'(password|pass|пароль|pwd)\\s*[:=]\\s*\\S+'\n\n    # Процесс маскирования\
+          \ данных\n    text = re.sub(email_regex, '[EMAIL_MASKED]', text)\n    text\
+          \ = re.sub(phone_regex, '[PHONE_MASKED]', text)\n    text = re.sub(password_regex,\
+          \ r'\\1: [PASSWORD_MASKED]', text, flags=re.IGNORECASE)\n    \n    # Ключ\
+          \ должен называться \"result\", как в OUTPUT VARIABLES справа\n    return\
+          \ {\n        \"result\": text\n    }\n"
+        code_language: python3
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: MASKING DATA
+        type: code
+        variables:
+        - value_selector:
+          - sys
+          - query
+          value_type: string
+          variable: user_requirements
+      height: 52
+      id: '1782113841228'
+      position:
+        x: 982
+        y: 282
+      positionAbsolute:
+        x: 982
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        selected: false
+        template: The provided requirements are not enough to generate test cases.
+          Please complete the description.
+        title: NO ENOUGH INFO
+        type: template-transform
+        variables: []
+      height: 52
+      id: '1782113859906'
+      position:
+        x: 982
+        y: 373
+      positionAbsolute:
+        x: 982
+        y: 373
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1782113841228'
+          - result
+        desc: ''
+        isInIteration: false
+        isInLoop: false
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: codestral-2501
+          provider: langgenius/mistralai/mistralai
+        prompt_template:
+        - id: a7605fbb-f48a-4194-8e64-4000e42aeb7d
+          role: system
+          text: 'You are an experienced QA Automation Engineer and a specialist in
+            load and functional testing. Your task is to analyze the cleaned user
+            requirements and generate a detailed test model based on them.
+
+
+            Input requirements: {{result}}
+
+
+            Generation Instructions:
+
+            1. Create a logically justified set of test cases covering positive and
+            negative scenarios.
+
+            2. Each test case must be detailed and formatted strictly according to
+            the following structure:
+
+            - ID: Unique identifier (e.g., TC-001)
+
+            - Title: What is being verified (clear and concise)
+
+            - Preconditions: The initial state of the system before the test
+
+            - Steps: Step-by-step actions (each starting on a new line)
+
+            - Expected Result: What the system should do
+
+
+            Output the result as a clear, structured text list. Do NOT use JSON at
+            this stage, as the text will proceed to an expert review. Write the test
+            cases as briefly and concisely as possible. Generate exactly no more than
+            3 of the most important test cases so that the total response does not
+            exceed 2500 characters.
+
+            '
+        selected: false
+        title: QA_Generator
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '17821140718050'
+      position:
+        x: 1285.5157165665103
+        y: 274
+      positionAbsolute:
+        x: 1285.5157165665103
+        y: 274
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '17821140718050'
+          - text
+        desc: ''
+        isInIteration: false
+        isInLoop: false
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: codestral-2501
+          provider: langgenius/mistralai/mistralai
+        prompt_template:
+        - id: 39288f59-142f-4737-94cf-e50e0f012304
+          role: system
+          text: "You are a Senior QA Lead / Software Quality Expert. Your task is\
+            \ to conduct a review (quality check) of the generated test cases and\
+            \ improve them. \n\nSource test cases for analysis: {{text}}\n\nReview\
+            \ Criteria:\n1. Completeness: Are all steps clearly described? Are there\
+            \ any missing critical actions?\n2. Accuracy: Is the expected result for\
+            \ each step logical?\n3. Structure Quality: Do the test cases comply with\
+            \ software testing standards?\n\nYour Actions:\n- Analyze the provided\
+            \ list of test cases.\n- Fix logical errors if any are found.\n- Make\
+            \ step formulations clearer and more professional.\n- If necessary, add\
+            \ critical missing verifications (e.g., boundary values or error handling).\n\
+            \nOutput the final, fully refined, and improved list of test cases. Do\
+            \ NOT write any introductory words or personal comments (such as \"Here\
+            \ are your test cases\", \"I have reviewed them\", etc.). Output ONLY\
+            \ the clean, ready-to-use text of the test model.\n"
+        selected: false
+        title: QA_Reviewer
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '17821152106010'
+      position:
+        x: 1606
+        y: 274
+      positionAbsolute:
+        x: 1606
+        y: 274
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '17821152106010'
+          - text
+        desc: ''
+        isInIteration: false
+        isInLoop: false
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: codestral-2501
+          provider: langgenius/mistralai/mistralai
+        prompt_template:
+        - id: 8f6e1c10-9d35-4946-93c5-2fc0aa630952
+          role: system
+          text: 'You are a data conversion tool. Your task is to strictly convert
+            the provided text list of test cases into JSON format.
+
+
+            List of test cases for conversion: {{text}}
+
+
+            Mandatory JSON structure you must return:
+
+            { "test_cases": [ { "id": "string with ID", "title": "string with title",
+            "preconditions": [ "precondition 1", "precondition 2" ], "steps": [ "step
+            1", "step 2" ], "expected_result": "string with expected result" } ] }
+
+
+            Important rules:
+
+            1. If there are no preconditions, leave the "preconditions" array empty
+            [].
+
+            2. The response must contain ONLY clean, pure JSON code.
+
+            3. Do NOT add any markdown formatting, do NOT use code blocks like ```json
+            ... ```, and do NOT include conversational words like "Here is your JSON".
+            Return ONLY the raw valid JSON object text.
+
+            '
+        selected: false
+        title: JSON CONVERSION
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '17821152359960'
+      position:
+        x: 1958
+        y: 274
+      positionAbsolute:
+        x: 1958
+        y: 274
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "import json\n\ndef main(json_string: str) -> dict:\n    # Проверка\
+          \ должна быть ЗДЕСЬ, внутри функции и с отступом в 4 пробела\n    if not\
+          \ json_string:\n        return {\n            \"status\": \"invalid\", \n\
+          \            \"result\": \"Ошибка: На вход передана пустая строка или null\"\
+          \n        }\n\n    # Очищаем текст от возможных пробелов и переносов\n \
+          \   cleaned = str(json_string).strip()\n    \n    # Если модель всё-таки\
+          \ добавила markdown-обертку, срезаем её\n    if cleaned.startswith(\"```json\"\
+          ):\n        cleaned = cleaned[7:]\n    elif cleaned.startswith(\"```\"):\n\
+          \        cleaned = cleaned[3:]\n        \n    if cleaned.endswith(\"```\"\
+          ):\n        cleaned = cleaned[:-3]\n    cleaned = cleaned.strip()\n\n  \
+          \  try:\n        # Проверяем, что это корректный JSON-синтаксис\n      \
+          \  parsed = json.loads(cleaned)\n        \n        # Проверяем наличие обязательного\
+          \ корневого ключа по ТЗ\n        if isinstance(parsed, dict) and \"test_cases\"\
+          \ in parsed:\n            return {\n                \"status\": \"valid\"\
+          , \n                \"result\": json.dumps(parsed, ensure_ascii=False, indent=2)\n\
+          \            }\n        else:\n            return {\n                \"\
+          status\": \"invalid\", \n                \"result\": \"Ошибка структуры:\
+          \ Отсутствует корневой ключ 'test_cases'\"\n            }\n            \n\
+          \    except Exception as e:\n        return {\n            \"status\": \"\
+          invalid\", \n            \"result\": f\"Ошибка синтаксиса JSON: {str(e)}\"\
+          \n        }"
+        code_language: python3
+        desc: ''
+        isInIteration: false
+        isInLoop: false
+        outputs:
+          result:
+            children: null
+            type: string
+          status:
+            children: null
+            type: string
+        selected: false
+        title: JSON REVIEW
+        type: code
+        variables:
+        - value_selector:
+          - '17821152359960'
+          - text
+          value_type: string
+          variable: json_string
+      height: 52
+      id: '17821152681720'
+      position:
+        x: 2331
+        y: 274
+      positionAbsolute:
+        x: 2331
+        y: 274
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        desc: ''
+        isInIteration: false
+        isInLoop: false
+        is_team_authorization: true
+        paramSchemas:
+        - auto_generate: null
+          default: '%Y-%m-%d %H:%M:%S'
+          form: form
+          human_description:
+            en_US: Time format in strftime standard.
+            ja_JP: Time format in strftime standard.
+            pt_BR: Time format in strftime standard.
+            zh_Hans: strftime 标准的时间格式。
+          label:
+            en_US: Format
+            ja_JP: Format
+            pt_BR: Format
+            zh_Hans: 格式
+          llm_description: null
+          max: null
+          min: null
+          name: format
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: UTC
+          form: form
+          human_description:
+            en_US: Timezone
+            ja_JP: Timezone
+            pt_BR: Timezone
+            zh_Hans: 时区
+          label:
+            en_US: Timezone
+            ja_JP: Timezone
+            pt_BR: Timezone
+            zh_Hans: 时区
+          llm_description: null
+          max: null
+          min: null
+          name: timezone
+          options:
+          - icon: null
+            label:
+              en_US: UTC
+              ja_JP: UTC
+              pt_BR: UTC
+              zh_Hans: UTC
+            value: UTC
+          - icon: null
+            label:
+              en_US: America/New_York
+              ja_JP: America/New_York
+              pt_BR: America/New_York
+              zh_Hans: 美洲/纽约
+            value: America/New_York
+          - icon: null
+            label:
+              en_US: America/Los_Angeles
+              ja_JP: America/Los_Angeles
+              pt_BR: America/Los_Angeles
+              zh_Hans: 美洲/洛杉矶
+            value: America/Los_Angeles
+          - icon: null
+            label:
+              en_US: America/Chicago
+              ja_JP: America/Chicago
+              pt_BR: America/Chicago
+              zh_Hans: 美洲/芝加哥
+            value: America/Chicago
+          - icon: null
+            label:
+              en_US: America/Sao_Paulo
+              ja_JP: America/Sao_Paulo
+              pt_BR: América/São Paulo
+              zh_Hans: 美洲/圣保罗
+            value: America/Sao_Paulo
+          - icon: null
+            label:
+              en_US: Asia/Shanghai
+              ja_JP: Asia/Shanghai
+              pt_BR: Asia/Shanghai
+              zh_Hans: 亚洲/上海
+            value: Asia/Shanghai
+          - icon: null
+            label:
+              en_US: Asia/Ho_Chi_Minh
+              ja_JP: Asia/Ho_Chi_Minh
+              pt_BR: Ásia/Ho Chi Minh
+              zh_Hans: 亚洲/胡志明市
+            value: Asia/Ho_Chi_Minh
+          - icon: null
+            label:
+              en_US: Asia/Tokyo
+              ja_JP: Asia/Tokyo
+              pt_BR: Asia/Tokyo
+              zh_Hans: 亚洲/东京
+            value: Asia/Tokyo
+          - icon: null
+            label:
+              en_US: Asia/Dubai
+              ja_JP: Asia/Dubai
+              pt_BR: Asia/Dubai
+              zh_Hans: 亚洲/迪拜
+            value: Asia/Dubai
+          - icon: null
+            label:
+              en_US: Asia/Kolkata
+              ja_JP: Asia/Kolkata
+              pt_BR: Asia/Kolkata
+              zh_Hans: 亚洲/加尔各答
+            value: Asia/Kolkata
+          - icon: null
+            label:
+              en_US: Asia/Seoul
+              ja_JP: Asia/Seoul
+              pt_BR: Asia/Seoul
+              zh_Hans: 亚洲/首尔
+            value: Asia/Seoul
+          - icon: null
+            label:
+              en_US: Asia/Singapore
+              ja_JP: Asia/Singapore
+              pt_BR: Asia/Singapore
+              zh_Hans: 亚洲/新加坡
+            value: Asia/Singapore
+          - icon: null
+            label:
+              en_US: Europe/London
+              ja_JP: Europe/London
+              pt_BR: Europe/London
+              zh_Hans: 欧洲/伦敦
+            value: Europe/London
+          - icon: null
+            label:
+              en_US: Europe/Berlin
+              ja_JP: Europe/Berlin
+              pt_BR: Europe/Berlin
+              zh_Hans: 欧洲/柏林
+            value: Europe/Berlin
+          - icon: null
+            label:
+              en_US: Europe/Moscow
+              ja_JP: Europe/Moscow
+              pt_BR: Europe/Moscow
+              zh_Hans: 欧洲/莫斯科
+            value: Europe/Moscow
+          - icon: null
+            label:
+              en_US: Australia/Sydney
+              ja_JP: Australia/Sydney
+              pt_BR: Australia/Sydney
+              zh_Hans: 澳大利亚/悉尼
+            value: Australia/Sydney
+          - icon: null
+            label:
+              en_US: Pacific/Auckland
+              ja_JP: Pacific/Auckland
+              pt_BR: Pacific/Auckland
+              zh_Hans: 太平洋/奥克兰
+            value: Pacific/Auckland
+          - icon: null
+            label:
+              en_US: Africa/Cairo
+              ja_JP: Africa/Cairo
+              pt_BR: Africa/Cairo
+              zh_Hans: 非洲/开罗
+            value: Africa/Cairo
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        params:
+          format: ''
+          timezone: ''
+        plugin_id: null
+        plugin_unique_identifier: ''
+        provider_icon: https://cloud.dify.ai/console/api/workspaces/current/tool-provider/builtin/time/icon
+        provider_id: time
+        provider_name: time
+        provider_type: builtin
+        selected: false
+        title: Set Current Time
+        tool_configurations:
+          format:
+            type: mixed
+            value: '%d-%m-%Y_%H-%M-%S'
+          timezone:
+            type: constant
+            value: Europe/Moscow
+        tool_description: A tool for getting the current time.
+        tool_label: Current Time
+        tool_name: current_time
+        tool_node_version: '2'
+        tool_parameters: {}
+        type: tool
+      height: 114
+      id: '17821152985160'
+      position:
+        x: 2694.0628662660415
+        y: 274
+      positionAbsolute:
+        x: 2694.0628662660415
+        y: 274
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        desc: ''
+        isInIteration: false
+        isInLoop: false
+        is_team_authorization: true
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: The content to save as a file. This can be plain text or base64
+              encoded binary data. Choose the appropriate format in the "format" parameter.
+            ja_JP: ファイルとして保存するコンテンツ。プレーンテキストまたは Base64 エンコードされたバイナリデータ。 "format" パラメータで適切な形式を選択する。
+            pt_BR: O conteúdo a ser salvo como arquivo. Pode ser texto simples ou
+              dados binários codificados em Base64. Escolha o formato apropriado no
+              parâmetro "format".
+            zh_Hans: 要保存为文件的内容。可以是纯文本或 Base64 编码的二进制数据。 在 "format" 参数中选择适当的格式。
+          label:
+            en_US: Content to save
+            ja_JP: Content to save
+            pt_BR: Content to save
+            zh_Hans: Content to save
+          llm_description: ''
+          max: null
+          min: null
+          name: content
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: output.txt
+          form: llm
+          human_description:
+            en_US: The name of the file to save the content as. This should include
+              the file extension (e.g., "output.txt").
+            ja_JP: 保存するファイル名。 ファイル拡張子を含める（例："output.txt"）。
+            pt_BR: O nome do arquivo para salvar o conteúdo. Deve incluir a extensão
+              do arquivo (por exemplo, "output.txt").
+            zh_Hans: 保存内容的文件名。 应包含文件扩展名（例如："output.txt"）。
+          label:
+            en_US: File name to save as
+            ja_JP: File name to save as
+            pt_BR: File name to save as
+            zh_Hans: File name to save as
+          llm_description: ''
+          max: null
+          min: null
+          name: filename
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: ''
+          form: llm
+          human_description:
+            en_US: The MIME type of the file. If not provided, it will be guessed
+              from the file name.
+            ja_JP: ファイルの MIME タイプ。提供されない場合、ファイル名から推測される。
+            pt_BR: O tipo MIME do arquivo. Se não fornecido, será adivinhado a partir
+              do nome do arquivo.
+            zh_Hans: 文件的 MIME 类型。如果未提供，将从文件名猜测。
+          label:
+            en_US: MIME type of the file
+            ja_JP: MIME type of the file
+            pt_BR: MIME type of the file
+            zh_Hans: MIME type of the file
+          llm_description: ''
+          max: null
+          min: null
+          name: mime_type
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: text
+          form: form
+          human_description:
+            en_US: The format of the content to save. Select "text" to save passed
+              string content as is, or "base64" to save passed content after decoding
+              it from base64.
+            ja_JP: コンテンツの形式。 渡された文字列コンテンツをそのまま保存する場合は "text" を選択し、 Base64 からデコードして保存する場合は
+              "base64" を選択する。
+            pt_BR: O formato do conteúdo a ser salvo. Selecione "text" para salvar
+              o conteúdo da string passada como está, ou "base64" para salvar o conteúdo
+              passado após decodificá-lo do Base64.
+            zh_Hans: 要保存的内容格式。 选择 "text" 按原样保存传递的字符串内容， 或选择 "base64" 在从 Base64 解码后保存传递的内容。
+          label:
+            en_US: Format of the content
+            ja_JP: Format of the content
+            pt_BR: Format of the content
+            zh_Hans: Format of the content
+          llm_description: ''
+          max: null
+          min: null
+          name: format
+          options:
+          - icon: ''
+            label:
+              en_US: text
+              ja_JP: text
+              pt_BR: text
+              zh_Hans: text
+            value: text
+          - icon: ''
+            label:
+              en_US: base64
+              ja_JP: base64
+              pt_BR: base64
+              zh_Hans: base64
+            value: base64
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        - auto_generate: null
+          default: ''
+          form: llm
+          human_description:
+            en_US: The encoding to use when saving the file. This parameter is only
+              used when the format is "text". Specify a valid Python encoding name
+              (e.g., "utf-8", "shift_jis", "euc-jp"). Default is empty, which means
+              "utf-8".
+            ja_JP: ファイルを保存する際に使用するエンコーディング。 このパラメータは、形式が "text" の場合にのみ使用される。 有効な Python
+              エンコーディング名を指定する（例："utf-8"、"shift_jis"、"euc-jp"）。 デフォルトは空で、"utf-8" を意味する。
+            pt_BR: A codificação a ser usada ao salvar o arquivo. Este parâmetro é
+              usado apenas quando o formato é "text". Especifique um nome de codificação
+              Python válido (por exemplo, "utf-8", "shift_jis", "euc-jp"). O padrão
+              é vazio, o que significa "utf-8".
+            zh_Hans: 保存文件时使用的编码。 此参数仅在格式为 "text" 时使用。 指定有效的 Python 编码名称（例如："utf-8"、"shift_jis"、"euc-jp"）。
+              默认值为空，表示 "utf-8"。
+          label:
+            en_US: Encoding
+            ja_JP: エンコーディング
+            pt_BR: Codificação
+            zh_Hans: 编码
+          llm_description: ''
+          max: null
+          min: null
+          name: encoding
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        params:
+          content: ''
+          encoding: ''
+          filename: ''
+          format: ''
+          mime_type: ''
+        plugin_id: kurokobo/file_tools
+        plugin_unique_identifier: kurokobo/file_tools:0.0.2@8bde7b4d2c30cf22e8f6ce851572af244f7a5776addab94330b820dc2160726c
+        provider_icon: https://cloud.dify.ai/console/api/workspaces/current/plugin/icon?tenant_id=5c3eff6f-bf23-48d9-aa2b-0a6a798df873&filename=ee7d6c28060a54d022218fdf905d7111d02c37749d033c631e13651d6a1539d2.svg
+        provider_id: kurokobo/file_tools/file_tools
+        provider_name: kurokobo/file_tools/file_tools
+        provider_type: builtin
+        selected: true
+        title: Saving as File
+        tool_configurations:
+          format:
+            type: constant
+            value: text
+        tool_description: Save input text or base64 encoded binary data as a file
+          with specified file name and MIME type.
+        tool_label: Save as File
+        tool_name: save_as_file
+        tool_node_version: '2'
+        tool_parameters:
+          content:
+            type: mixed
+            value: '{{#17821152681720.result#}}'
+          encoding:
+            type: mixed
+            value: ''
+          filename:
+            type: mixed
+            value: test_cases_{{#17821152985160.text#}}.json
+          mime_type:
+            type: mixed
+            value: application/json
+        type: tool
+      height: 88
+      id: '17821153275130'
+      position:
+        x: 3015
+        y: 274
+      positionAbsolute:
+        x: 3015
+        y: 274
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        answer: '{{#1782116812245.output#}}
+
+          {{#17821153275130.files#}}'
+        selected: false
+        title: SUCCESS
+        type: answer
+        variables: []
+      height: 120
+      id: '1782115470936'
+      position:
+        x: 3661.1936726114614
+        y: 274
+      positionAbsolute:
+        x: 3661.1936726114614
+        y: 274
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        answer: '{{#1782113859906.output#}}'
+        selected: false
+        title: Insufficient Info Notice
+        type: answer
+        variables: []
+      height: 102
+      id: '1782115539148'
+      position:
+        x: 1271.8881198309412
+        y: 373
+      positionAbsolute:
+        x: 1271.8881198309412
+        y: 373
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        selected: false
+        template: 'Your test cases have been successfully generated! You can download
+          the file below:'
+        title: You can download the file
+        type: template-transform
+        variables: []
+      height: 52
+      id: '1782116812245'
+      position:
+        x: 3362.709389177972
+        y: 274
+      positionAbsolute:
+        x: 3362.709389177972
+        y: 274
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    viewport:
+      x: -356.2611761048074
+      y: 101.01933964933977
+      zoom: 0.5000000000000002
+  rag_pipeline_variables: []
