@@ -59,6 +59,7 @@ To make your `Workflow` instance respond to users in Telegram, you need to conne
 2. Send the `/newbot` command and follow the instructions to choose a name and username.
 3. Copy the generated **HTTP API Token** (it looks like `123456789:ABCdefGhIJKlmNoPQRsTUVwxyZ`).
 
+
 ### 2. Link Telegram with Dify
 1. In your Dify Dashboard, open your imported **Workflow** project.
 2. Navigate to the **Monitoring** or **Publish** tab on the left menu.
