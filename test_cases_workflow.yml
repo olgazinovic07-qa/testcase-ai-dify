@@ -5790,7 +5790,7 @@ workflow:
           max_write_timeout: 0
         title: SEND ERROR MESSAGE
         type: http-request
-        url: https://api.telegram.org/bot8787583439:AAFehfHGyYTuV0H14uZNNOybSdeuH24y5VE/sendMessage?chat_id={{#1781252172014.message.chat.id#}}&text={{#1781259343958.output#}}
+        url: https://api.telegram.org/botYOUR_TELEGRAM_BOT_TOKEN/sendMessage?chat_id={{#1781252172014.message.chat.id#}}&text={{#1781259343958.output#}}
         variables: []
       height: 206
       id: '1781640729644'
